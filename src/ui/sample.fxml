@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="bButton" mnemonicParsing="false" onAction="#blurFilter" text="Blur">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="gbButton" mnemonicParsing="false" onAction="#gaussianBlurFilter" text="Gaussian Blur">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="sButton" mnemonicParsing="false" onAction="#sharpenFilter" text="Sharpen">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="lButton" mnemonicParsing="false" onAction="#laplaceFilter" text="Laplace">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#resetImage" text="Remove filters">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#loadMatrixView" text="New matrix">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#applyMatrix" text="Apply matrix" />
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="-13.0" top="-6.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rectangle" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X" />
+                        <TextField fx:id="tfX">
+                           <HBox.margin>
+                              <Insets top="-5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" right="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="-5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Y" />
+                        <TextField fx:id="tfY">
+                           <HBox.margin>
+                              <Insets top="-5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="25.0" right="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="-5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox spacing="2.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width" />
+                        <TextField fx:id="tfWidth">
+                           <HBox.margin>
+                              <Insets top="-5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox spacing="2.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height" />
+                        <TextField fx:id="tfHeight">
+                           <HBox.margin>
+                              <Insets top="-5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="9.0" />
+                     </padding>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#showRectangle" text="Show" />
+                  <Button mnemonicParsing="false" onAction="#confirmRectangle" text="Confirm" />
+               </children>
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <center>
+            <Pane fx:id="pane" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="500.0" fitWidth="800.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </Pane>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" spacing="70.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clearAll" text="Clear image" />
+                  <Button fx:id="oiButton" mnemonicParsing="false" onAction="#openImage" text="Open image...">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="siButton" mnemonicParsing="false" onAction="#saveImage" text="Save image..." />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>
