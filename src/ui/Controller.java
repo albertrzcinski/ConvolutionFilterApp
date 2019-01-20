@@ -79,6 +79,11 @@ public class Controller {
     public void openImage() {
         try {
             FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(
+              new FileChooser.ExtensionFilter("All images","*.jpg","*.jpeg","*.tiff","*.bmp","*.png"),
+            new FileChooser.ExtensionFilter("PNG","*.png"),
+            new FileChooser.ExtensionFilter("JPG","*.jpg")
+            );
             File input = fileChooser.showOpenDialog(Main.pStage);
             image = new Image(input.toURI().toString());
             bufferedImage = SwingFXUtils.fromFXImage(image, null);
@@ -104,6 +109,13 @@ public class Controller {
     public void saveImage() {
         if(imageView.getImage()!=null) {
             FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("All images","*.jpg","*.jpeg","*.tiff","*.bmp","*.png"),
+                    new FileChooser.ExtensionFilter("BMP","*.bmp"),
+                    new FileChooser.ExtensionFilter("PNG","*.png"),
+                    new FileChooser.ExtensionFilter("JPEG","*.jpeg"),
+                    new FileChooser.ExtensionFilter("JPG","*.jpg")
+            );
             File input = fileChooser.showSaveDialog(Main.pStage);
             if (input != null) {
                 try {
