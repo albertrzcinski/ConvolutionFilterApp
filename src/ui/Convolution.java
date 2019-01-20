@@ -7,7 +7,7 @@ public class Convolution{
 
     public static double[][] filterTab = new double[3][];
 
-    static double bound(double value)
+    static double checkValue(double value)
     {
         value = Math.round(value);
         if(value<0.0) value=0.0;
@@ -53,7 +53,6 @@ public class Convolution{
             }
 
             double sumR, sumG, sumB;
-            int wynikR, wynikG, wynikB;
 
             for(int y=Y; y<height+Y; y++){
                 for(int x=X; x<width+X; x++) {
@@ -71,12 +70,9 @@ public class Convolution{
                                 sumB += blueTab[y][x] * filterTab[w][k];
                             }
                         }
-                        wynikR=(int)bound(sumR/n);
-                        wynikG=(int)bound(sumG/n);
-                        wynikB=(int)bound(sumB/n);
-                        wyRedTab[y][x] = wynikR;
-                        wyGreenTab[y][x] = wynikG;
-                        wyBlueTab[y][x] = wynikB;
+                        wyRedTab[y][x] = (int) checkValue(sumR/n);
+                        wyGreenTab[y][x] = (int) checkValue(sumG/n);
+                        wyBlueTab[y][x] = (int) checkValue(sumB/n);
                     }
                 }
             }
