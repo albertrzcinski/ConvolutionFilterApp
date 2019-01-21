@@ -136,7 +136,7 @@ public class Controller {
                     {1, 1, 1}
             };
 
-            Convolution.filterTab = filterTab;
+            Convolution.setFilterTab(filterTab);
             bufferedImage = Convolution.transform(bufferedImage,height,width,fy,fx);
             imageView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
         }
@@ -151,7 +151,7 @@ public class Controller {
                     {0,1,0}
             };
 
-            Convolution.filterTab = filterTab;
+            Convolution.setFilterTab(filterTab);
             bufferedImage = Convolution.transform(bufferedImage,height,width,fy,fx);
             imageView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
         }
@@ -166,7 +166,7 @@ public class Controller {
                     {0,-1,0}
                 };
 
-            Convolution.filterTab = filterTab;
+            Convolution.setFilterTab(filterTab);
             bufferedImage = Convolution.transform(bufferedImage,height,width,fy,fx);
             imageView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
         }
@@ -181,7 +181,7 @@ public class Controller {
                     {-1,-1,-1}
             };
 
-            Convolution.filterTab = filterTab;
+            Convolution.setFilterTab(filterTab);
             bufferedImage = Convolution.transform(bufferedImage,height,width,fy,fx);
             imageView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
         }
@@ -254,5 +254,9 @@ public class Controller {
         resetImage();
         if(rectangle!=null)
             pane.getChildren().remove(rectangle);
+        fx=0;
+        fy=0;
+        width=bufferedImage.getWidth();
+        height=bufferedImage.getHeight();
     }
 }

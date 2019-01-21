@@ -5,7 +5,11 @@ import java.awt.image.BufferedImage;
 
 public class Convolution{
 
-    public static double[][] filterTab = new double[3][];
+    static double[][] filterTab = new double[3][];
+
+    public static void setFilterTab(double[][] filterTab) {
+        Convolution.filterTab = filterTab;
+    }
 
     static double checkValue(double value)
     {
@@ -25,13 +29,6 @@ public class Convolution{
             int[][] wyGreenTab = new int[height+Y][width+X];
             int[][] wyBlueTab = new int[height+Y][width+X];
 
-            /*double[][] filterTab = new double[][]{
-                    {0,1,0},
-                    {1,-4,1},
-                    {0,1,0}
-            };*/
-
-            //double n=9;
             double n=0;
 
             for(int i=0; i<3; i++)
@@ -64,7 +61,6 @@ public class Convolution{
                                 sumG += greenTab[y - 1 + w][x - 1 + k] * filterTab[w][k];
                                 sumB += blueTab[y - 1 + w][x - 1 + k] * filterTab[w][k];
                             }catch (ArrayIndexOutOfBoundsException e){
-                                //sumR = sumG = sumB = 255;
                                 sumR += redTab[y][x] * filterTab[w][k];
                                 sumG += greenTab[y][x] * filterTab[w][k];
                                 sumB += blueTab[y][x] * filterTab[w][k];
@@ -79,7 +75,6 @@ public class Convolution{
 
             for(int y=Y; y<height+Y; y++) {
                 for (int x = X; x < width+X; x++) {
-                    //System.out.println(wyRedTab[y][x] + "," + wyGreenTab[y][x] + "," + wyBlueTab[y][x]);
                     Color color = new Color(wyRedTab[y][x], wyGreenTab[y][x], wyBlueTab[y][x]);
                     image.setRGB(x, y, color.getRGB());
                 }
